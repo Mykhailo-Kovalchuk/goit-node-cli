@@ -1,6 +1,4 @@
-console.log("123123123 test test test")
-
-import * as contactsService from './contacts.js'; // імпорт всіх функцій з файлу contacts.
+import * as contactsService from './src/contacts.js'; // імпорт всіх функцій з файлу contacts.
 
 import { program } from "commander"; // імпорт командера
 program // налаштування командера (через option), прописуємо команди в опшини нижче
@@ -31,8 +29,8 @@ async function invokeAction({ action, id, name, email, phone }) {
 
     case "add":
       // ... name email phone
-      const addNewContact = await contactsService.addContact(id, name, email, phone);
-      return console.log(newMovie);
+      const addNewContact = await contactsService.addContact(name, email, phone);
+      return console.log(addNewContact);
       // break;
 
     case "remove":

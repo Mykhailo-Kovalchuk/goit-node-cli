@@ -9,7 +9,7 @@ import path from "path"; // імпорт шляхів  path
  */
 
 // const contactsPath = path.join("db", "contacts.json");  // цей метод (path.join()) отримує частинку шляху і об`єднує їх в 1 шлях.
-const contactsPath = path.resolve("db", "contacts.json"); // так само як join, але на початок він підставляє абсолютний шлях ло кореня проєкту.
+const contactsPath = path.resolve("src", "db", "contacts.json"); // так само як join, але на початок він підставляє абсолютний шлях ло кореня проєкту.
 // console.log(contactsPath)
 
 const  refreshedContacts = (contactsList) => fs.writeFile(contactsPath, JSON.stringify(contactsList, null, 2)); // прописуємо функцію оновлення нашого масиву контактів
@@ -19,6 +19,7 @@ const  refreshedContacts = (contactsList) => fs.writeFile(contactsPath, JSON.str
     // ...твій код. Повертає масив контактів.
     try {
       const data = await fs.readFile(contactsPath, "utf-8") // utf-8 - прописуємо це кодування, щоб нам одразу повернувся рядок замість буферу (наче як не обов`язково, але нехай буде).
+      console.table(JSON.parse(data));
       return JSON.parse(data);
     } catch (error) {
       // console.log(error.message);
